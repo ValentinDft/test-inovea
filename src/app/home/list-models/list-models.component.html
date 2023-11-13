@@ -1,0 +1,14 @@
+<div class="list">
+  <div class="card" *ngFor="let model of listModels">
+    <div class="card-date">
+      <span>Date: {{ model.date | date : "EEEE dd MMMM yyyy" }}</span>
+    </div>
+    <div class="card-info">
+      <img
+        src="../../../assets/png/{{ model.modelName }}.png"
+        alt="model image"
+      />
+      <p>{{ model.name }}</p>
+    </div>
+  </div>
+</div>
