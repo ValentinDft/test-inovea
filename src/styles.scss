@@ -1,6 +1,6 @@
 :root {
   --background-color: rgb(25, 25, 25);
-  --background-color-light: rgb(50, 50, 50);
+  --background-color-light: rgb(40, 40, 40);
 }
 
 body,
@@ -34,6 +34,16 @@ p {
   &:hover {
     transform: scale(1.05);
   }
+}
+
+.button-delete {
+  @extend .button-primary;
+  background-color: red;
+}
+
+.button-edit {
+  @extend .button-primary;
+  background-color: green;
 }
 
 .input-search {

@@ -8,7 +8,7 @@ export type modelsType = {
   description: string;
   date: string;
   modelName: string;
-  polygone: number;
+  polygons: number;
 };
 
 @Injectable({
@@ -17,7 +17,19 @@ export type modelsType = {
 export class ApiModelsService {
   constructor(private _http: HttpClient) {}
 
-  getModels() {
+  getAllModels() {
     return this._http.get<modelsType[]>('http://localhost:3333/api/models');
+  }
+
+  getModelById(id: string) {
+    return this._http.get<modelsType>(`http://localhost:3333/api/models/${id}`);
+  }
+
+  deleteModel(id: string) {
+    return this._http.delete(`http://localhost:3333/api/models/${id}`);
+  }
+
+  addModel(model: modelsType) {
+    return this._http.post('http://localhost:3333/api/models', model);
   }
 }

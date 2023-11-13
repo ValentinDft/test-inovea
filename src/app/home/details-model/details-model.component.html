@@ -1,1 +1,25 @@
-<p>details-model works! {{ idModel }}</p>
+<div class="card-details">
+  <div class="card-details-header">
+    <h2>{{ detailsModel?.name }}</h2>
+    <h2>{{ detailsModel?.author }}</h2>
+  </div>
+
+  <div class="card-details-img">
+    <img
+      src="../../../assets/png/{{ detailsModel?.modelName }}.png"
+      alt="model img"
+    />
+  </div>
+  <div class="card-details-info">
+    <p>
+      <span>Publié le : </span>
+      {{ detailsModel?.date | date : "EEEE dd MMMM yyyy" }}
+    </p>
+    <p><span>Polygone : </span>{{ detailsModel?.polygons }}</p>
+    <p><span>Description : </span>{{ detailsModel?.description }}</p>
+  </div>
+  <div class="card-details-actions">
+    <button class="button-delete" (click)="deleteModel()">Supprimer</button>
+    <button class="button-edit">Editer</button>
+  </div>
+</div>

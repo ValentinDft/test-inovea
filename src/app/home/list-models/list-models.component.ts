@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ApiModelsService,
@@ -9,6 +9,7 @@ import { registerLocaleData } from '@angular/common';
 import frenchLocale from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 registerLocaleData(frenchLocale);
 
 @Component({
@@ -19,15 +20,22 @@ registerLocaleData(frenchLocale);
   templateUrl: './list-models.component.html',
   styleUrl: './list-models.component.scss',
 })
-export class ListModelsComponent implements OnInit {
+export class ListModelsComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiModelsService, private router: Router) {}
 
   listModels: modelsType[] = [];
+  modelsSubscribtion!: Subscription;
 
   ngOnInit(): void {
-    this.apiService.getModels().subscribe((data) => {
-      this.listModels = data;
-    });
+    this.modelsSubscribtion = this.apiService
+      .getAllModels()
+      .subscribe((data) => {
+        this.listModels = data;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.modelsSubscribtion.unsubscribe();
   }
 
   openDetails(id: string) {
