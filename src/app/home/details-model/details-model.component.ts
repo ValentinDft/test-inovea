@@ -40,11 +40,13 @@ export class DetailsModelComponent implements OnChanges, OnDestroy {
 
   deleteModel() {
     this.apiService.deleteModel(this.idModel).subscribe(() => {
-      this.apiService.getAllModels().subscribe((data) => {
-        this.router.navigate([`models/${data[0].id}`]).then(() => {
-          window.location.reload();
+      this.modelSubscribtion = this.apiService
+        .getAllModels()
+        .subscribe((data) => {
+          this.router.navigate([`models/${data[0].id}`]).then(() => {
+            window.location.reload();
+          });
         });
-      });
     });
   }
 }

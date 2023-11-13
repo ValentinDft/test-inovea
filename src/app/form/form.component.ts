@@ -46,7 +46,7 @@ export class FormComponent implements OnInit, OnDestroy {
       name: ['', [Validators.required, Validators.minLength(3)]],
       author: ['', [Validators.required, Validators.minLength(2)]],
       polygons: ['', [Validators.required, Validators.min(10)]],
-      fileName: ['', [Validators.required, Validators.minLength(3)]],
+      modelName: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
