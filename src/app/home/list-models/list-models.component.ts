@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import frenchLocale from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
+import { Router } from '@angular/router';
 registerLocaleData(frenchLocale);
 
 @Component({
@@ -19,7 +20,7 @@ registerLocaleData(frenchLocale);
   styleUrl: './list-models.component.scss',
 })
 export class ListModelsComponent implements OnInit {
-  constructor(private apiService: ApiModelsService) {}
+  constructor(private apiService: ApiModelsService, private router: Router) {}
 
   listModels: modelsType[] = [];
 
@@ -27,5 +28,9 @@ export class ListModelsComponent implements OnInit {
     this.apiService.getModels().subscribe((data) => {
       this.listModels = data;
     });
+  }
+
+  openDetails(id: string) {
+    this.router.navigate([`models/${id}`]);
   }
 }

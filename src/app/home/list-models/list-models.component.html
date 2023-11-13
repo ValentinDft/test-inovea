@@ -1,5 +1,9 @@
 <div class="list">
-  <div class="card" *ngFor="let model of listModels">
+  <div
+    class="card"
+    *ngFor="let model of listModels"
+    (click)="openDetails(model.id)"
+  >
     <div class="card-date">
       <span>Date: {{ model.date | date : "EEEE dd MMMM yyyy" }}</span>
     </div>
