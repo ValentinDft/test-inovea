@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --background-color: rgb(25, 25, 25);
+  --background-color-light: rgb(50, 50, 50);
+}
+
+body,
+html {
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.button-primary {
+  background-color: rgb(17, 83, 215);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.input-search {
+  background-color: rgb(70, 70, 70);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+}

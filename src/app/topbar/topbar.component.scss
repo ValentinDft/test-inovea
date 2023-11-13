@@ -1,0 +1,22 @@
+@import "../../styles.scss";
+
+.topbar {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 100vw;
+
+  &-title {
+    padding: 0px 50px;
+  }
+
+  &-actions {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color-light);
+    padding: 0px 50px;
+  }
+}
