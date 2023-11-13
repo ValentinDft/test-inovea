@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { registerLocaleData } from '@angular/common';
 import frenchLocale from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
+import { Router } from '@angular/router';
 registerLocaleData(frenchLocale);
 
 @Component({
@@ -20,7 +21,7 @@ registerLocaleData(frenchLocale);
   styleUrl: './details-model.component.scss',
 })
 export class DetailsModelComponent implements OnChanges, OnDestroy {
-  constructor(private apiService: ApiModelsService) {}
+  constructor(private apiService: ApiModelsService, private router: Router) {}
   @Input() idModel: any;
   detailsModel?: modelsType;
   modelSubscribtion!: Subscription;
@@ -38,8 +39,12 @@ export class DetailsModelComponent implements OnChanges, OnDestroy {
   }
 
   deleteModel() {
-    this.apiService.deleteModel(this.idModel).subscribe((data) => {
-      console.log(data);
+    this.apiService.deleteModel(this.idModel).subscribe(() => {
+      this.apiService.getAllModels().subscribe((data) => {
+        this.router.navigate([`models/${data[0].id}`]).then(() => {
+          window.location.reload();
+        });
+      });
     });
   }
 }

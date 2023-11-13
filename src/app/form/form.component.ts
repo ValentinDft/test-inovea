@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-import { ApiModelsService } from '../services/api-models.service';
+import { ApiModelsService, modelsType } from '../services/api-models.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -57,9 +57,10 @@ export class FormComponent implements OnInit, OnDestroy {
       this.modelForm.value.date = new Date().toISOString();
       this.addSubscribtion = this.apiService
         .addModel(this.modelForm.value)
-        .subscribe((res) => {
-          console.log(res);
-          // this.router.navigate([`models/${this.modelForm.value.id}`]);
+        .subscribe((res): any => {
+          this.router.navigate([`models/${res.id}`]).then(() => {
+            window.location.reload();
+          });
         });
     }
   }
