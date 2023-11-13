@@ -20,3 +20,19 @@
     padding: 0px 50px;
   }
 }
+
+.modal {
+  width: 60%;
+  background-color: var(--background-color);
+  color: white;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-close {
+    cursor: pointer;
+  }
+}

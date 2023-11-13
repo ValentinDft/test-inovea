@@ -8,6 +8,16 @@
       placeholder="Chercher un modèle 3D"
       class="input-search"
     />
-    <button class="button-primary">Ajouter un modèle 3D</button>
+    <button class="button-primary" (click)="addModal.show()">
+      Ajouter un modèle 3D
+    </button>
   </div>
 </div>
+
+<dialog #addModal class="modal">
+  <div class="modal-header">
+    <h2>Ajouter un modèle 3D</h2>
+    <span (click)="addModal.close()" class="modal-close">X</span>
+  </div>
+  <app-form></app-form>
+</dialog>

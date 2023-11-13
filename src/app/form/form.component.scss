@@ -1,0 +1,10 @@
+.form-model {
+  display: flex;
+  flex-direction: column;
+
+  .form-action {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+  }
+}
